@@ -18,13 +18,23 @@ export const detailAPI = (id) => {
 };
 
 // 点赞、收藏
-export const likeCollectAPI = (id,num) => {
+export const likeCollectAPI = (id,type) => {
   return request({
     method: "post",
     url: '/h5/interview/opt',
     data: {
       id,
-      optType:num
+      optType:type
     }
   });
 };
+
+// 收藏、点赞列表
+
+export const likeCollectListAPI = (params) => {
+  return request({
+    url: '/h5/interview/opt/list',
+    method: 'get',
+    params
+  })
+}

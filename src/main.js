@@ -9,6 +9,7 @@ import ArticleItem from "./components/ArticleItem.vue";
 // --------完整导入vant使用
 import Vant from "vant";
 import "vant/lib/index.css";
+import 'vant/lib/index.less'; // 引入vant的less文件
 // 注册全局组件
 Vue.component("ArticleItem", ArticleItem);
 Vue.use(Vant);

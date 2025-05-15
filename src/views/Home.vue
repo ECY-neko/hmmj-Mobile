@@ -1,7 +1,10 @@
 <template>
   <div class="layout-page">
     <!-- 二级路由出口 -->
-    <router-view></router-view>
+    <keep-alive :include="['article-page']">
+      <router-view></router-view>
+    </keep-alive>
+
     <!-- 底部tabbar -->
     <van-tabbar route>
       <van-tabbar-item icon="description" to="/article">面经</van-tabbar-item>
@@ -14,8 +17,8 @@
 
 <script>
 export default {
-  name: 'layout-page'
-}
+  name: "layout-page",
+};
 </script>
 
 <style lang="less" scoped></style>

@@ -42,11 +42,13 @@ export default {
   data() {
     return {
       current: 1, // 页码
-      sorter: null, // weight_desc获取推荐的面试题  null 最新的
+      sorter: "weight_desc", // weight_desc获取推荐的面试题  null 最新的
       list: [], // 默认展示数据
-      loading: false, // true 正在加载  false 没请求，不加载 
+      loading: false, // true 正在加载  false 没请求，不加载
       finished: false,
       refreshing: false,
+      temp: 0, // 记录滚动的距离
+      scrollTop: 0, // 真实滚动的距离
     };
   },
   // created() {
@@ -95,6 +97,18 @@ export default {
       this.loading = true; // 表示正在加载数据，避免重复发请求
       this.onLoad(); // 调方法，发请求
     },
+  },
+  activated() {
+    window.addEventListener("scroll", () => {
+      // 保存页面滚动的距离
+      this.temp = document.documentElement.scrollTop;
+    });
+    // 设置滚动出去的距离（滚动条位置）
+    document.documentElement.scrollTop = this.scrollTop;
+  },
+  deactivated() {
+    // 把滚动出局的距离记录到新的变量中
+    this.scrollTop = this.temp;
   },
 };
 </script>

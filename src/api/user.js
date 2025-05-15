@@ -15,3 +15,8 @@ export const registerAPI = (data) => {
 export const loginAPI = (data) => {
   return request.post("/h5/user/login", data);
 };
+
+// 获取用户信息
+export const getUserInfoAPI = () => {
+  return request.get('/h5/user/currentUser')
+}
